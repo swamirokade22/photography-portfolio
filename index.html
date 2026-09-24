@@ -1,237 +1,684 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Photography Portfolio</title>
+    <title>Alex Mercer | Photography Portfolio</title>
+    <meta name="description" content="Premium photography portfolio showcasing portrait, editorial, and commercial work.">
     <style>
-        /* Modern UI Reset & Global Variables */
         :root {
-            --bg-color: #0b0b0b;
-            --card-bg: #141414;
-            --accent-color: #ffffff;
-            --text-main: #f5f5f5;
-            --text-muted: #8e8e93;
-            --border-color: #2c2c2e;
+            --bg: #0b0b0d;
+            --bg-soft: #121214;
+            --panel: rgba(23, 23, 26, 0.82);
+            --panel-strong: #18181b;
+            --panel-alt: #1e1e22;
+            --text: #f4f1ee;
+            --muted: #b8b0a8;
+            --line: rgba(255, 255, 255, 0.08);
+            --gold: #d4b07a;
+            --gold-soft: #f0d9b5;
+            --shadow: rgba(0, 0, 0, 0.45);
+            --max-width: 1180px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(212, 176, 122, 0.12), transparent 28%),
+                linear-gradient(180deg, #0b0b0d 0%, #111114 100%);
+            color: var(--text);
             line-height: 1.6;
-            padding-top: 70px; /* Space for the sticky navbar */
         }
 
-        /* Sticky Navigation Bar Component */
-        nav {
-            position: fixed;
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            background: rgba(11, 11, 11, 0.85);
-            backdrop-filter: blur(12px); /* Premium frosted glass effect */
-            border-bottom: 1px solid var(--border-color);
+            z-index: 50;
+            backdrop-filter: blur(18px);
+            background: rgba(11, 11, 13, 0.7);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 3rem;
-            z-index: 1000;
+            padding: 22px 0;
         }
 
-        nav .logo {
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.1rem;
-        }
-
-        nav ul {
+        .brand {
             display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 0.28rem;
+            font-size: 0.74rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.2s ease;
+            color: var(--text);
         }
 
-        nav ul li a:hover {
-            color: var(--accent-color);
+        .brand-mark {
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 176, 122, 0.45);
+            color: var(--gold-soft);
+            font-size: 0.75rem;
+            font-weight: 700;
         }
 
-        /* Responsive Layout Container */
-        .container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 3rem 1.5rem; 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Section Header Layout */
-        .section-header {
-            margin-bottom: 2.5rem;
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            transition: color 0.25s ease;
         }
 
-        .section-header h2 { 
-            font-size: 1.5rem; 
-            font-weight: 600;
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            margin-bottom: 0.5rem;
+        .nav-links a:hover {
+            color: var(--text);
         }
 
-        .section-header p {
-            color: var(--text-muted);
+        .nav-cta {
+            border: 1px solid rgba(212, 176, 122, 0.5);
+            padding: 12px 18px;
+            border-radius: 999px;
+            color: var(--gold-soft);
+            font-size: 0.72rem;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            border-color: rgba(212, 176, 122, 0.9);
+        }
+
+        .hero {
+            padding: 84px 0 56px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 42px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 8px 14px;
+            font-size: 0.68rem;
+            letter-spacing: 0.22rem;
+            border: 1px solid rgba(255,255,255,0.09);
+            color: var(--gold-soft);
+            text-transform: uppercase;
+            background: rgba(255,255,255,0.02);
+            border-radius: 999px;
+        }
+
+        h1 {
+            margin: 0 0 18px;
+            font-size: clamp(2.8rem, 4vw, 5rem);
+            line-height: 0.98;
+            letter-spacing: -0.06em;
+            font-weight: 700;
+        }
+
+        .hero-copy {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 630px;
+            margin-bottom: 28px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 24px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.12rem;
+            font-size: 0.72rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, var(--gold-soft), #c79d65);
+            color: #111;
+            box-shadow: 0 12px 30px rgba(212, 176, 122, 0.22);
+        }
+
+        .button.secondary {
+            border-color: rgba(255,255,255,0.12);
+            color: var(--text);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(120px, 1fr));
+            gap: 18px;
+            max-width: 520px;
+        }
+
+        .stat {
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            letter-spacing: -0.05em;
+            margin-bottom: 4px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.76rem;
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 640px;
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.07);
+            background:
+                linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+        }
+
+        .hero-badge {
+            position: absolute;
+            left: 26px;
+            bottom: 26px;
+            background: rgba(17,17,18,0.74);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 18px 20px;
+            min-width: 240px;
+        }
+
+        .hero-badge small {
+            display: block;
+            color: var(--gold-soft);
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            font-size: 0.62rem;
+            margin-bottom: 8px;
+        }
+
+        .hero-badge strong {
+            display: block;
+            font-size: 1.1rem;
+            letter-spacing: -0.04em;
+            margin-bottom: 4px;
+        }
+
+        .hero-badge span {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: clamp(2rem, 2vw, 2.8rem);
+            letter-spacing: -0.06em;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 560px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--panel);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 176, 122, 0.4);
+        }
+
+        .portfolio-card {
+            grid-column: span 4;
+            aspect-ratio: 0.92;
+        }
+
+        .portfolio-card:nth-child(1) {
+            grid-column: span 7;
+            aspect-ratio: 1.25;
+        }
+
+        .portfolio-card:nth-child(2) {
+            grid-column: span 5;
+            aspect-ratio: 0.9;
+        }
+
+        .portfolio-card:nth-child(3),
+        .portfolio-card:nth-child(4) {
+            grid-column: span 6;
+        }
+
+        .portfolio-card:nth-child(5),
+        .portfolio-card:nth-child(6) {
+            grid-column: span 4;
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s ease;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.06);
+            filter: saturate(1.08) contrast(1.06);
+        }
+
+        .portfolio-label {
+            position: absolute;
+            left: 18px;
+            bottom: 18px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(18,18,20,0.72);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(9px);
+            font-size: 0.72rem;
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .portrait {
+            min-height: 540px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            box-shadow: 0 28px 60px rgba(0,0,0,0.28);
+        }
+
+        .about-copy {
+            padding: 26px 0;
+        }
+
+        .about-copy p {
+            color: var(--muted);
+            font-size: 1.02rem;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .signature-mark {
+            font-family: Georgia, serif;
+            font-size: 2.2rem;
+            color: var(--gold-soft);
+        }
+
+        .signature small {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.18rem;
+            color: var(--muted);
+            font-size: 0.65rem;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .gear-item {
+            padding: 28px 22px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        }
+
+        .gear-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            margin-bottom: 22px;
+            background: rgba(212,176,122,0.12);
+            color: var(--gold-soft);
+            font-size: 1.3rem;
+            border: 1px solid rgba(212,176,122,0.2);
+        }
+
+        .gear-item h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            letter-spacing: -0.04em;
+        }
+
+        .gear-item p {
+            margin: 0;
+            color: var(--muted);
             font-size: 0.95rem;
         }
 
-        /* Premium Interactive Gallery Grid */
-        .gallery { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 24px; 
-            margin-bottom: 5rem; 
-        }
-
-        .gallery-item { 
-            position: relative;
-            overflow: hidden; 
-            border-radius: 6px; 
-            background: var(--card-bg); 
-            border: 1px solid var(--border-color);
-            aspect-ratio: 4 / 3; /* Forces uniform size across portfolio images */
-            cursor: pointer;
-        }
-
-        /* Clean overlay style for missing images */
-        .gallery-item::before {
-            content: "Photo Preview Placeholder";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #444;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+        footer {
+            padding: 28px 0 54px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.12rem;
             text-transform: uppercase;
-            z-index: 1;
         }
 
-        .gallery-item img { 
-            position: relative;
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block; 
-            z-index: 2;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease; 
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        /* Cinematic Scale Zoom Animation */
-        .gallery-item:hover img { 
-            transform: scale(1.04);
-            filter: brightness(0.85);
+        @media (max-width: 920px) {
+            .hero-grid,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-card,
+            .portfolio-card:nth-child(n) {
+                grid-column: auto;
+                aspect-ratio: 1.15;
+            }
         }
 
-        /* Refined Equipment Grid Cards */
-        .gear-list { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 24px; 
-        }
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
 
-        .gear-card { 
-            background: var(--card-bg); 
-            padding: 2rem; 
-            border-radius: 6px; 
-            border: 1px solid var(--border-color);
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
+            .nav {
+                padding: 18px 0;
+            }
 
-        .gear-card:hover {
-            border-color: #444;
-            transform: translateY(-2px); /* Soft lift on hover interface */
-        }
+            .hero {
+                padding-top: 42px;
+            }
 
-        .gear-card h3 { 
-            font-size: 1.1rem; 
-            font-weight: 500;
-            margin-bottom: 0.75rem; 
-            letter-spacing: 0.5px;
-        }
+            .stats {
+                grid-template-columns: 1fr;
+            }
 
-        .gear-card p { 
-            color: var(--text-muted); 
-            font-size: 0.9rem; 
-            line-height: 1.5;
-        }
+            .section-heading {
+                display: block;
+            }
 
-        /* Quick mobile optimization rule */
-        @media (max-width: 768px) {
-            nav { padding: 0 1.5rem; }
-            nav ul { display: none; } /* Simplicity fallback for smaller screens */
+            .section-heading p {
+                margin-top: 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <header class="topbar">
+        <div class="container nav">
+            <a href="#top" class="brand" aria-label="Alex Mercer home">
+                <span class="brand-mark">A</span>
+                <span>Alex Mercer</span>
+            </a>
 
-    <!-- Premium Header Interface Bar -->
-    <nav>
-        <div class="logo">Alex Mercer</div>
-        <ul>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#gear">Equipment</a></li>
-        </ul>
-    </nav>
+            <ul class="nav-links">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gear">Equipment</a></li>
+            </ul>
 
-    <div class="container">
-        <!-- Upgraded Visual Gallery Section -->
-        <section id="portfolio">
-            <div class="section-header">
-                <h2>Selected Works</h2>
-                <p>A compilation of recent commercial assignments, landscape studies, and visual documentation.</p>
+            <a href="#contact" class="nav-cta">Book a session</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container" id="top">
+            <div class="hero-grid">
+                <div>
+                    <span class="eyebrow">Contemporary photography</span>
+                    <h1>Stories shaped by light.</h1>
+                    <p class="hero-copy">
+                        I create refined, cinematic imagery for brands, editors, and individuals who value atmosphere,
+                        precision, and a distinctly elevated visual language.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#portfolio" class="button primary">View portfolio</a>
+                        <a href="#about" class="button secondary">About the artist</a>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat">
+                            <strong>12+</strong>
+                            <span>Years</span>
+                        </div>
+                        <div class="stat">
+                            <strong>180</strong>
+                            <span>Projects</span>
+                        </div>
+                        <div class="stat">
+                            <strong>24</strong>
+                            <span>Countries</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-label="Featured photography portrait">
+                    <div class="hero-badge">
+                        <small>Featured Story</small>
+                        <strong>Golden Hour Editorial</strong>
+                        <span>Berlin · Spring Collection</span>
+                    </div>
+                </div>
             </div>
-            
+        </section>
+
+        <section class="container" id="portfolio">
+            <div class="section-heading">
+                <h2>Selected works</h2>
+                <p>Visual narratives built through composition, texture, and atmosphere across portrait, commercial, and travel assignments.</p>
+            </div>
+
             <div class="gallery">
-                <div class="gallery-item"><img src="images/photo1.jpg" alt="Landscape Architecture Study"></div>
-                <div class="gallery-item"><img src="images/photo2.jpg" alt="Editorial Portrait Focus"></div>
-                <div class="gallery-item"><img src="images/photo3.jpg" alt="Commercial Studio Still Life"></div>
+                <article class="card portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="Fashion portrait photo" />
+                    <div class="portfolio-label">Editorial</div>
+                </article>
+
+                <article class="card portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=80" alt="Portrait with natural light" />
+                    <div class="portfolio-label">Portrait</div>
+                </article>
+
+                <article class="card portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Luxury styling and fashion image" />
+                    <div class="portfolio-label">Fashion</div>
+                </article>
+
+                <article class="card portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Landscape photography" />
+                    <div class="portfolio-label">Travel</div>
+                </article>
+
+                <article class="card portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Studio portrait session" />
+                    <div class="portfolio-label">Studio</div>
+                </article>
+
+                <article class="card portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Commercial headshot setup" />
+                    <div class="portfolio-label">Branding</div>
+                </article>
             </div>
         </section>
 
-        <!-- Upgraded Equipment Grid Section -->
-        <section id="gear">
-            <div class="section-header">
-                <h2>Production Equipment</h2>
-                <p>The standard technological toolkit deployed across project workflows to ensure maximum precision.</p>
+        <section class="container" id="about">
+            <div class="about">
+                <div class="portrait" aria-label="Portrait of Alex Mercer"></div>
+
+                <div class="about-copy">
+                    <span class="eyebrow">About the artist</span>
+                    <h2>Intentional imagery with a refined visual point of view.</h2>
+                    <p>
+                        I approach every frame with a balance of craftsmanship and storytelling. From luxury brand campaigns to intimate portraits,
+                        my work is shaped by natural movement, elegant composition, and a deep sensitivity to mood.
+                    </p>
+                    <p>
+                        Each project is developed to capture atmosphere, personality, and character with clarity and sophistication—creating work that feels timeless, elevated, and unmistakably personal.
+                    </p>
+
+                    <div class="signature">
+                        <div class="signature-mark">AM</div>
+                        <div>
+                            <small>Alex Mercer</small>
+                            <strong>Photographer & Creative Director</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="gear">
+            <div class="section-heading">
+                <h2>Tools of the trade</h2>
+                <p>High-performance equipment selected to ensure accuracy, tonal depth, and premium results across every assignment.</p>
             </div>
 
-            <div class="gear-list">
-                <div class="gear-card">
+            <div class="gear-grid">
+                <article class="gear-item">
+                    <div class="gear-icon">◎</div>
                     <h3>Sony Alpha a7R V</h3>
-                    <p>61-megapixel full-frame mirrorless imaging architecture utilized for deep dynamic expression and ultra-high-resolution clarity.</p>
-                </div>
-                <div class="gear-card">
+                    <p>Full-frame imaging with exceptional detail, natural color rendition, and ultra-clean tonal transitions.</p>
+                </article>
+
+                <article class="gear-item">
+                    <div class="gear-icon">◌</div>
                     <h3>Sony FE 24-70mm f/2.8 GM II</h3>
-                    <p>A high-performance standard zoom optic delivering critical edge-to-edge sharpness across variable configurations.</p>
-                </div>
-                <div class="gear-card">
+                    <p>A versatile, high-definition lens delivering clarity and precision across commercial and editorial work.</p>
+                </article>
+
+                <article class="gear-item">
+                    <div class="gear-icon">✦</div>
                     <h3>DJI Mavic 3 Pro Cine</h3>
-                    <p>Tri-camera aerial integration providing professional Apple ProRes formatting and high-altitude composition perspectives.</p>
-                </div>
+                    <p>Advanced aerial capture for cinematic movement, architectural framing, and location-based storytelling.</p>
+                </article>
             </div>
         </section>
-    </div>
+    </main>
 
+    <footer id="contact">
+        <div class="container footer-row">
+            <span>Alex Mercer</span>
+            <span>Available worldwide</span>
+            <span>hello@alexmercer.studio</span>
+        </div>
+    </footer>
 </body>
 </html>
